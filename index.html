@@ -1,0 +1,963 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MOTORVERSE | Cars • Gaming • Community</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #050505;
+      color: white;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 18px 6%;
+
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(15px);
+
+      border-bottom: 1px solid #202020;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: 3px;
+    }
+
+    .logo span {
+      color: #00eaff;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    nav a:hover {
+      color: #00eaff;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+      padding: 30px;
+
+      background:
+        linear-gradient(
+          rgba(0,0,0,.35),
+          rgba(0,0,0,.9)
+        ),
+        url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=85");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      max-width: 1000px;
+      animation: appear 1.3s ease;
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 10vw, 125px);
+      letter-spacing: 8px;
+
+      text-shadow:
+        0 0 15px rgba(0,234,255,.6),
+        0 0 45px rgba(0,234,255,.35);
+    }
+
+    .hero h1 span {
+      color: #00eaff;
+    }
+
+    .hero p {
+      margin: 25px 0 35px;
+
+      color: #ddd;
+      font-size: 21px;
+    }
+
+    .button {
+      display: inline-block;
+
+      padding: 15px 30px;
+
+      border-radius: 30px;
+
+      background: #00eaff;
+      color: #000;
+
+      text-decoration: none;
+      font-weight: 900;
+
+      transition: .3s;
+    }
+
+    .button:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 30px #00eaff;
+    }
+
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      padding: 100px 7%;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 43px;
+      margin-bottom: 50px;
+    }
+
+    .title span {
+      color: #00eaff;
+    }
+
+
+    /* =========================
+       UNIVERS
+    ========================= */
+
+    .cards {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+
+      gap: 25px;
+    }
+
+    .card {
+      padding: 30px;
+
+      min-height: 250px;
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #151515,
+          #0a0a0a
+        );
+
+      border: 1px solid #252525;
+
+      transition: .4s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+
+      border-color: #00eaff;
+
+      box-shadow:
+        0 0 30px rgba(0,234,255,.18);
+    }
+
+    .icon {
+      font-size: 45px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #aaa;
+      line-height: 1.6;
+    }
+
+
+    /* =========================
+       GARAGE
+    ========================= */
+
+    .garage {
+      background: #090909;
+    }
+
+    .car-list {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(270px, 1fr));
+
+      gap: 28px;
+    }
+
+    .car {
+      overflow: hidden;
+
+      background: #111;
+
+      border-radius: 20px;
+
+      border: 1px solid #252525;
+
+      transition: .4s;
+    }
+
+    .car:hover {
+      transform: translateY(-8px);
+
+      border-color: #00eaff;
+
+      box-shadow:
+        0 0 30px rgba(0,234,255,.15);
+    }
+
+    .car img {
+      width: 100%;
+      height: 210px;
+
+      object-fit: cover;
+
+      display: block;
+    }
+
+    .car-info {
+      padding: 22px;
+    }
+
+    .car-info h3 {
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+
+    .car-info p {
+      color: #888;
+      margin-bottom: 15px;
+    }
+
+    .specs {
+      display: flex;
+      justify-content: space-between;
+
+      padding-top: 15px;
+
+      border-top: 1px solid #252525;
+
+      color: #bbb;
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       GAMING
+    ========================= */
+
+    .gaming {
+      background:
+        linear-gradient(
+          rgba(0,0,0,.75),
+          rgba(0,0,0,.95)
+        ),
+        url("https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=2000&q=85");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .game-box {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+      gap: 30px;
+    }
+
+    .game {
+      padding: 40px;
+
+      min-height: 280px;
+
+      border-radius: 20px;
+
+      background: rgba(10,10,10,.88);
+
+      border: 1px solid #333;
+    }
+
+    .game h3 {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .game p {
+      color: #aaa;
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+
+    /* =========================
+       COMMUNITY
+    ========================= */
+
+    .community {
+      text-align: center;
+    }
+
+    .community p {
+      max-width: 700px;
+
+      margin: 0 auto 30px;
+
+      color: #aaa;
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      text-align: center;
+
+      padding: 35px;
+
+      background: #020202;
+
+      border-top: 1px solid #202020;
+
+      color: #777;
+    }
+
+    footer strong {
+      color: #00eaff;
+    }
+
+
+    /* =========================
+       ANIMATION
+    ========================= */
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width: 750px) {
+
+      nav {
+        padding: 15px 20px;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      section {
+        padding: 75px 5%;
+      }
+
+      .hero h1 {
+        letter-spacing: 3px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
+
+  <nav>
+
+    <div class="logo">
+      MOTOR<span>VERSE</span>
+    </div>
+
+    <ul>
+
+      <li>
+        <a href="#accueil">Accueil</a>
+      </li>
+
+      <li>
+        <a href="#univers">Univers</a>
+      </li>
+
+      <li>
+        <a href="#garage">Garage</a>
+      </li>
+
+      <li>
+        <a href="#gaming">Gaming</a>
+      </li>
+
+      <li>
+        <a href="#community">Communauté</a>
+      </li>
+
+    </ul>
+
+  </nav>
+
+
+
+  <!-- =========================
+       ACCUEIL
+  ========================= -->
+
+  <section class="hero" id="accueil">
+
+    <div class="hero-content">
+
+      <h1>
+        MOTOR<span>VERSE</span>
+      </h1>
+
+      <p>
+        Cars • Gaming • Racing • Community
+      </p>
+
+      <a
+        href="#univers"
+        class="button"
+      >
+        EXPLORER MOTORVERSE
+      </a>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================
+       UNIVERS
+  ========================= -->
+
+  <section id="univers">
+
+    <h2 class="title">
+      NOS <span>UNIVERS</span>
+    </h2>
+
+    <div class="cards">
+
+
+      <div class="card">
+
+        <div class="icon">
+          🏎️
+        </div>
+
+        <h3>
+          CarZone
+        </h3>
+
+        <p>
+          Découvre l'univers automobile,
+          les voitures et la communauté
+          de passionnés.
+        </p>
+
+      </div>
+
+
+
+      <div class="card">
+
+        <div class="icon">
+          🏁
+        </div>
+
+        <h3>
+          Garage
+        </h3>
+
+        <p>
+          Explore les caractéristiques
+          des voitures mythiques.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">
+          💎
+        </div>
+
+        <h3>
+          Luxury
+        </h3>
+
+        <p>
+          Supercars, hypercars et voitures
+          de prestige.
+        </p>
+
+      </div>
+
+
+
+      <div class="card">
+
+        <div class="icon">
+          🎮
+        </div>
+
+        <h3>
+          Drive Gaming
+        </h3>
+
+        <p>
+          Forza, The Crew et jeux
+          automobiles.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================
+       GARAGE
+  ========================= -->
+
+  <section
+    class="garage"
+    id="garage"
+  >
+
+    <h2 class="title">
+      LE <span>GARAGE</span>
+    </h2>
+
+
+    <div class="car-list">
+
+
+      <!-- BMW M3 -->
+
+      <div class="car">
+
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbCq6yxZvdRygYCVDiELQgflKi7QoSsIBs3YYF4SfQYA&s=10"
+          alt="BMW M3 touring"
+        >
+
+        <div class="car-info">
+
+          <h3>
+            BMW M3 G80
+          </h3>
+
+          <p>
+            🇩🇪 BMW • Sport
+          </p>
+
+          <div class="specs">
+
+            <span>
+              480 ch
+            </span>
+
+            <span>
+              3.0L
+            </span>
+
+            <span>
+              R6
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- NISSAN GT-R -->
+
+      <div class="car">
+
+        <img
+          src="https://www.espace-nissan.fr/app/uploads/GTR2.jpg"
+          alt="Nissan GT-R"
+        >
+
+        <div class="car-info">
+
+          <h3>
+            Nissan GT-R R35
+          </h3>
+
+          <p>
+            🇯🇵 Nissan • JDM
+          </p>
+
+          <div class="specs">
+
+            <span>
+              570 ch
+            </span>
+
+            <span>
+              3.8L
+            </span>
+
+            <span>
+              V6
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- LAMBORGHINI -->
+
+      <div class="car">
+
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1OtblToj5pL4DlIqrg-mcinQkPTDZ_OUnRpUkovuJzw&s=10"
+          alt="Lamborghini hurcan performance"
+        >
+
+        <div class="car-info">
+
+          <h3>
+            Lamborghini Huracán
+          </h3>
+
+          <p>
+            🇮🇹 Lamborghini • Supercar
+          </p>
+
+          <div class="specs">
+
+            <span>
+              640 ch
+            </span>
+
+            <span>
+              5.2L
+            </span>
+
+            <span>
+              V10
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- FERRARI -->
+
+      <div class="car">
+
+        <img
+          src="https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&w=1000&q=85"
+          alt="Ferrari"
+        >
+
+        <div class="car-info">
+
+          <h3>
+            Ferrari 488
+          </h3>
+
+          <p>
+            🇮🇹 Ferrari • Supercar
+          </p>
+
+          <div class="specs">
+
+            <span>
+              670 ch
+            </span>
+
+            <span>
+              3.9L
+            </span>
+
+            <span>
+              V8
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- MERCEDES AMG -->
+
+      <div class="car">
+
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO2oujYDHJb7h1nDJK013TLULbHP6Xlmv67engOwjmZA&s=10"
+          alt="Mercedes AMG"
+        >
+
+        <div class="car-info">
+
+          <h3>
+            Mercedes-AMG GT
+          </h3>
+
+          <p>
+            🇩🇪 Mercedes-AMG • Performance
+          </p>
+
+          <div class="specs">
+
+            <span>
+              V8
+            </span>
+
+            <span>
+              AMG
+            </span>
+
+            <span>
+              Sport
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================
+       GAMING
+  ========================= -->
+
+  <section
+    class="gaming"
+    id="gaming"
+  >
+
+    <h2 class="title">
+      DRIVE <span>GAMING</span>
+    </h2>
+
+
+    <div class="game-box">
+
+
+      <div class="game">
+
+        <h3>
+          🗻 Forza Horizon 5
+        </h3>
+
+        <p>
+          Retrouvez les voitures,
+          courses, créations et
+          défis autour de l'univers Forza.
+        </p>
+
+           <a
+  href="https://forza.net/fr-FR/"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="button"
+>
+
+          EXPLORER
+        </a>
+
+      </div>
+
+
+
+      <div class="game">
+
+        <h3>
+          🏝️ The Crew Motorfest
+        </h3>
+
+        <p>
+          Retrouvez les voitures,
+          événements et défis autour
+          de l'univers The Crew.
+        </p>
+
+        <a
+         href="https://www.ubisoft.com/fr-fr/game/the-crew/motorfest"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="button"
+>
+
+          EXPLORER
+        </a>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================
+       COMMUNAUTÉ
+  ========================= -->
+
+  <section
+    class="community"
+    id="community"
+  >
+
+    <h2 class="title">
+      REJOINS LA
+      <span>COMMUNAUTÉ</span>
+    </h2>
+
+    <p>
+
+      Partage tes voitures,
+      participe aux défis,
+      présente tes créations
+      et rencontre d'autres
+      passionnés automobiles.
+
+    </p>
+
+    <a
+  href="https://discord.gg/SKFcFdSZ6"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="button"
+>
+  💬 REJOINDRE LE DISCORD
+
+</a>
+
+  </section>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    © 2026
+    <strong>MOTORVERSE</strong>
+
+    —
+
+    Cars • Gaming • Racing • Community
+
+  </footer>
+
+
+  <script>
+
+    console.log(
+      "🏎️ MOTORVERSE est prêt !"
+    );
+
+  </script>
+
+
+</body>
+</html>
+```
