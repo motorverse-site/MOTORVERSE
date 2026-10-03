@@ -1,13 +1,13 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <title>MOTORVERSE | Cars • Gaming • Community</title>
 
   <style>
+
     * {
       margin: 0;
       padding: 0;
@@ -15,10 +15,20 @@
       scroll-behavior: smooth;
     }
 
+    html {
+      scroll-padding-top: 80px;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       background: #050505;
       color: white;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
     }
 
     /* =========================
@@ -38,7 +48,7 @@
 
       padding: 18px 6%;
 
-      background: rgba(0, 0, 0, 0.82);
+      background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(15px);
 
       border-bottom: 1px solid #202020;
@@ -48,6 +58,7 @@
       font-size: 25px;
       font-weight: 900;
       letter-spacing: 3px;
+      white-space: nowrap;
     }
 
     .logo span {
@@ -71,6 +82,29 @@
       color: #00eaff;
     }
 
+    /* BOUTON MENU MOBILE */
+
+    .menu-button {
+      display: none;
+
+      width: 44px;
+      height: 44px;
+
+      border: 1px solid #333;
+      border-radius: 10px;
+
+      background: #111;
+      color: white;
+
+      font-size: 23px;
+
+      cursor: pointer;
+    }
+
+    .menu-button:active {
+      transform: scale(.95);
+    }
+
 
     /* =========================
        HERO
@@ -84,7 +118,7 @@
       justify-content: center;
 
       text-align: center;
-      padding: 30px;
+      padding: 30px 20px;
 
       background:
         linear-gradient(
@@ -98,6 +132,7 @@
     }
 
     .hero-content {
+      width: 100%;
       max-width: 1000px;
       animation: appear 1.3s ease;
     }
@@ -123,7 +158,12 @@
     }
 
     .button {
-      display: inline-block;
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-height: 50px;
 
       padding: 15px 30px;
 
@@ -136,6 +176,8 @@
       font-weight: 900;
 
       transition: .3s;
+
+      cursor: pointer;
     }
 
     .button:hover {
@@ -228,6 +270,35 @@
       background: #090909;
     }
 
+    .garage-search {
+      display: block;
+
+      width: 100%;
+      max-width: 600px;
+
+      margin: 0 auto 35px;
+
+      padding: 16px 18px;
+
+      border-radius: 12px;
+
+      border: 1px solid #333;
+
+      background: #111;
+      color: white;
+
+      font-size: 16px;
+
+      outline: none;
+    }
+
+    .garage-search:focus {
+      border-color: #00eaff;
+
+      box-shadow:
+        0 0 15px rgba(0,234,255,.15);
+    }
+
     .car-list {
       display: grid;
 
@@ -284,6 +355,7 @@
     .specs {
       display: flex;
       justify-content: space-between;
+      gap: 8px;
 
       padding-top: 15px;
 
@@ -369,7 +441,7 @@
     footer {
       text-align: center;
 
-      padding: 35px;
+      padding: 35px 20px;
 
       background: #020202;
 
@@ -380,6 +452,36 @@
 
     footer strong {
       color: #00eaff;
+    }
+
+
+    /* =========================
+       RETOUR EN HAUT
+    ========================= */
+
+    #topButton {
+      position: fixed;
+
+      right: 18px;
+      bottom: 18px;
+
+      width: 46px;
+      height: 46px;
+
+      border: none;
+      border-radius: 50%;
+
+      background: #00eaff;
+      color: #000;
+
+      font-size: 22px;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      display: none;
+
+      z-index: 900;
     }
 
 
@@ -404,28 +506,215 @@
        MOBILE
     ========================= */
 
-    @media(max-width: 750px) {
+    @media (max-width: 750px) {
 
       nav {
-        padding: 15px 20px;
+        padding: 13px 16px;
+      }
+
+      .logo {
+        font-size: 20px;
+        letter-spacing: 2px;
+      }
+
+      .menu-button {
+        display: block;
       }
 
       nav ul {
+        position: absolute;
+
+        top: calc(100% + 8px);
+        right: 14px;
+
+        width: 220px;
+
         display: none;
+
+        flex-direction: column;
+
+        gap: 3px;
+
+        padding: 10px;
+
+        background: rgba(8,8,8,.97);
+
+        border: 1px solid #333;
+
+        border-radius: 15px;
+
+        box-shadow:
+          0 15px 40px rgba(0,0,0,.6);
       }
 
-      section {
-        padding: 75px 5%;
+      nav ul.active {
+        display: flex;
+      }
+
+      nav ul li a {
+        display: block;
+
+        padding: 14px;
+
+        border-radius: 10px;
+
+        font-size: 16px;
+      }
+
+      nav ul li a:active {
+        background: #151515;
+      }
+
+
+      /* HERO */
+
+      .hero {
+        min-height: 92vh;
+
+        padding:
+          100px 18px
+          50px;
       }
 
       .hero h1 {
-        letter-spacing: 3px;
+        font-size: 14vw;
+
+        letter-spacing: 2px;
       }
 
       .hero p {
         font-size: 17px;
+
+        line-height: 1.5;
+
+        margin:
+          20px 0 28px;
+      }
+
+      .button {
+        width: 100%;
+        max-width: 350px;
+
+        padding: 15px 20px;
+      }
+
+
+      /* SECTIONS */
+
+      section {
+        padding:
+          65px 16px;
+      }
+
+      .title {
+        font-size: 31px;
+
+        margin-bottom: 35px;
+      }
+
+
+      /* UNIVERS */
+
+      .cards {
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+      }
+
+      .card {
+        min-height: auto;
+
+        padding: 23px;
+      }
+
+      .card h3 {
+        font-size: 22px;
+      }
+
+      .icon {
+        font-size: 38px;
+
+        margin-bottom: 12px;
+      }
+
+
+      /* GARAGE */
+
+      .garage-search {
+        margin-bottom: 25px;
+
+        font-size: 16px;
+      }
+
+      .car-list {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+      }
+
+      .car img {
+        height: 220px;
+      }
+
+      .car-info {
+        padding: 19px;
+      }
+
+      .car-info h3 {
+        font-size: 22px;
+      }
+
+
+      /* GAMING */
+
+      .game-box {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+      }
+
+      .game {
+        min-height: auto;
+
+        padding: 25px;
+      }
+
+      .game h3 {
+        font-size: 25px;
+      }
+
+
+      /* FOOTER */
+
+      footer {
+        padding: 28px 15px;
+
+        line-height: 1.7;
       }
     }
+
+
+    /* PETITS TÉLÉPHONES */
+
+    @media (max-width: 380px) {
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .hero h1 {
+        font-size: 13vw;
+      }
+
+      .title {
+        font-size: 28px;
+      }
+
+      .car img {
+        height: 190px;
+      }
+    }
+
   </style>
 </head>
 
@@ -443,26 +732,47 @@
       MOTOR<span>VERSE</span>
     </div>
 
-    <ul>
+    <!-- MENU TÉLÉPHONE -->
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
+
+    <ul id="navLinks">
 
       <li>
-        <a href="#accueil">Accueil</a>
+        <a href="#accueil">
+          Accueil
+        </a>
       </li>
 
       <li>
-        <a href="#univers">Univers</a>
+        <a href="#univers">
+          Univers
+        </a>
       </li>
 
       <li>
-        <a href="#garage">Garage</a>
+        <a href="#garage">
+          Garage
+        </a>
       </li>
 
       <li>
-        <a href="#gaming">Gaming</a>
+        <a href="#gaming">
+          Gaming
+        </a>
       </li>
 
       <li>
-        <a href="#community">Communauté</a>
+        <a href="#community">
+          Communauté
+        </a>
       </li>
 
     </ul>
@@ -470,12 +780,14 @@
   </nav>
 
 
-
   <!-- =========================
        ACCUEIL
   ========================= -->
 
-  <section class="hero" id="accueil">
+  <section
+    class="hero"
+    id="accueil"
+  >
 
     <div class="hero-content">
 
@@ -497,7 +809,6 @@
     </div>
 
   </section>
-
 
 
   <!-- =========================
@@ -530,7 +841,6 @@
         </p>
 
       </div>
-
 
 
       <div class="card">
@@ -569,7 +879,6 @@
       </div>
 
 
-
       <div class="card">
 
         <div class="icon">
@@ -593,7 +902,6 @@
   </section>
 
 
-
   <!-- =========================
        GARAGE
   ========================= -->
@@ -608,22 +916,40 @@
     </h2>
 
 
-    <div class="car-list">
+    <!-- RECHERCHE -->
+
+    <input
+      type="search"
+      id="garageSearch"
+      class="garage-search"
+      placeholder="🔎 Rechercher une voiture..."
+      aria-label="Rechercher une voiture"
+    >
 
 
-      <!-- BMW M3 -->
+    <div
+      class="car-list"
+      id="carList"
+    >
 
-      <div class="car">
+
+      <!-- BMW -->
+
+      <div
+        class="car"
+        data-name="BMW M3 Touring"
+      >
 
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbCq6yxZvdRygYCVDiELQgflKi7QoSsIBs3YYF4SfQYA&s=10"
-          alt="BMW M3 touring"
+          alt="BMW M3 Touring"
+          loading="lazy"
         >
 
         <div class="car-info">
 
           <h3>
-            BMW M3 touring
+            BMW M3 Touring
           </h3>
 
           <p>
@@ -651,20 +977,23 @@
       </div>
 
 
+      <!-- NISSAN -->
 
-      <!-- NISSAN GT-R -->
-
-      <div class="car">
+      <div
+        class="car"
+        data-name="Nissan GT-R"
+      >
 
         <img
           src="https://www.espace-nissan.fr/app/uploads/GTR2.jpg"
           alt="Nissan GT-R"
+          loading="lazy"
         >
 
         <div class="car-info">
 
           <h3>
-            Nissan GT-R 
+            Nissan GT-R
           </h3>
 
           <p>
@@ -692,14 +1021,17 @@
       </div>
 
 
-
       <!-- LAMBORGHINI -->
 
-      <div class="car">
+      <div
+        class="car"
+        data-name="Lamborghini Huracan"
+      >
 
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1OtblToj5pL4DlIqrg-mcinQkPTDZ_OUnRpUkovuJzw&s=10"
-          alt="Lamborghini hurcan performance"
+          alt="Lamborghini Huracán"
+          loading="lazy"
         >
 
         <div class="car-info">
@@ -733,14 +1065,17 @@
       </div>
 
 
-
       <!-- FERRARI -->
 
-      <div class="car">
+      <div
+        class="car"
+        data-name="Ferrari 488"
+      >
 
         <img
           src="https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&w=1000&q=85"
-          alt="Ferrari"
+          alt="Ferrari 488"
+          loading="lazy"
         >
 
         <div class="car-info">
@@ -774,14 +1109,17 @@
       </div>
 
 
+      <!-- MERCEDES -->
 
-      <!-- MERCEDES AMG -->
-
-      <div class="car">
+      <div
+        class="car"
+        data-name="Mercedes AMG GT"
+      >
 
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO2oujYDHJb7h1nDJK013TLULbHP6Xlmv67engOwjmZA&s=10"
-          alt="Mercedes AMG"
+          alt="Mercedes AMG GT"
+          loading="lazy"
         >
 
         <div class="car-info">
@@ -815,23 +1153,27 @@
       </div>
 
 
-  <!-- AUDI RS -->
+      <!-- AUDI -->
 
-      <div class="car">
+      <div
+        class="car"
+        data-name="Audi RS6"
+      >
 
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO2oujYDHJb7h1nDJK013TLULbHP6Xlmv67engOwjmZA&s=10"
-          alt="AUDI RS"
+          alt="Audi RS6"
+          loading="lazy"
         >
 
         <div class="car-info">
 
           <h3>
-            AUDI RS 6
+            Audi RS 6
           </h3>
 
           <p>
-            🇩🇪 AUDI RS 6 ABT
+            🇩🇪 Audi RS 6 ABT
           </p>
 
           <div class="specs">
@@ -848,7 +1190,7 @@
               Sport
             </span>
 
-	    <span>
+            <span>
               ABT
             </span>
 
@@ -858,10 +1200,10 @@
 
       </div>
 
+
     </div>
 
   </section>
-
 
 
   <!-- =========================
@@ -893,18 +1235,16 @@
           défis autour de l'univers Forza.
         </p>
 
-           <a
-  href="https://forza.net/fr-FR/"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="button"
->
-
+        <a
+          href="https://forza.net/fr-FR/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="button"
+        >
           EXPLORER
         </a>
 
       </div>
-
 
 
       <div class="game">
@@ -920,12 +1260,11 @@
         </p>
 
         <a
-         href="https://www.ubisoft.com/fr-fr/game/the-crew/motorfest"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="button"
->
-
+          href="https://www.ubisoft.com/fr-fr/game/the-crew/motorfest"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="button"
+        >
           EXPLORER
         </a>
 
@@ -935,7 +1274,6 @@
     </div>
 
   </section>
-
 
 
   <!-- =========================
@@ -953,27 +1291,23 @@
     </h2>
 
     <p>
-
       Partage tes voitures,
       participe aux défis,
       présente tes créations
       et rencontre d'autres
       passionnés automobiles.
-
     </p>
 
     <a
-  href="https://discord.gg/SKFcFdSZ6"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="button"
->
-  💬 REJOINDRE LE DISCORD
-
-</a>
+      href="https://discord.gg/SKFcFdSZ6"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="button"
+    >
+      💬 REJOINDRE LE DISCORD
+    </a>
 
   </section>
-
 
 
   <!-- =========================
@@ -986,13 +1320,167 @@
     <strong>MOTORVERSE</strong>
 
     —
-
     Cars • Gaming • Racing • Community
 
   </footer>
 
 
+  <!-- RETOUR EN HAUT -->
+
+  <button
+    id="topButton"
+    aria-label="Retour en haut"
+  >
+    ↑
+  </button>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
   <script>
+
+    /* =========================
+       MENU MOBILE
+    ========================= */
+
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
+
+    menuButton.addEventListener(
+      "click",
+      function () {
+
+        navLinks.classList.toggle("active");
+
+        const ouvert =
+          navLinks.classList.contains("active");
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          ouvert
+        );
+
+        menuButton.textContent =
+          ouvert ? "✕" : "☰";
+
+      }
+    );
+
+
+    /* Fermer le menu quand
+       on clique sur un lien */
+
+    document
+      .querySelectorAll("#navLinks a")
+      .forEach(function(link) {
+
+        link.addEventListener(
+          "click",
+          function() {
+
+            navLinks.classList.remove("active");
+
+            menuButton.textContent = "☰";
+
+            menuButton.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
+        );
+
+      });
+
+
+    /* =========================
+       RECHERCHE GARAGE
+    ========================= */
+
+    const search =
+      document.getElementById("garageSearch");
+
+    const cars =
+      document.querySelectorAll(".car");
+
+
+    search.addEventListener(
+      "input",
+      function() {
+
+        const recherche =
+          search.value
+            .toLowerCase()
+            .trim();
+
+
+        cars.forEach(function(car) {
+
+          const nom =
+            car.dataset.name
+              .toLowerCase();
+
+
+          if (nom.includes(recherche)) {
+
+            car.style.display = "";
+
+          } else {
+
+            car.style.display = "none";
+
+          }
+
+        });
+
+      }
+    );
+
+
+    /* =========================
+       RETOUR EN HAUT
+    ========================= */
+
+    const topButton =
+      document.getElementById("topButton");
+
+
+    window.addEventListener(
+      "scroll",
+      function() {
+
+        if (window.scrollY > 500) {
+
+          topButton.style.display = "block";
+
+        } else {
+
+          topButton.style.display = "none";
+
+        }
+
+      }
+    );
+
+
+    topButton.addEventListener(
+      "click",
+      function() {
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+      }
+    );
+
 
     console.log(
       "🏎️ MOTORVERSE est prêt !"
@@ -1003,4 +1491,3 @@
 
 </body>
 </html>
-```
